@@ -17,6 +17,13 @@
 
       terminal = "alacritty";
 
+      input = {
+        "*" = {
+          xkb_layout = "us,no,ru";
+          xkb_options = "grp:alt_shift_toggle";
+        };
+      };
+
       keybindings = let
         mod = "Mod4";
       in {
@@ -39,6 +46,11 @@
         # базовое
         "${mod}+q" = "kill";
         "${mod}+d" = "exec dmenu_run";
+
+        # languages
+        "Ctrl+1" = "input type:keyboard xkb_switch_layout 0";
+        "Ctrl+2" = "input type:keyboard xkb_switch_layout 1";
+        "Ctrl+3" = "input type:keyboard xkb_switch_layout 2";
       };
 
       startup = [
