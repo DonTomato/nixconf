@@ -24,6 +24,12 @@
         };
       };
 
+      output = {
+        "eDP-1" = {
+          scale = "1.2";
+        };
+      };
+
       keybindings = let
         mod = "Mod4";
       in {
