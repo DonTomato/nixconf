@@ -10,7 +10,6 @@
     ../../modules/desktop.nix
     ../../modules/fonts.nix
     ../../modules/env.nix
-    #../../modules/sway.nix
   ];
 
   networking.hostName = "nixos";

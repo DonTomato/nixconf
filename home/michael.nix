@@ -15,6 +15,8 @@
     config = {
       modifier = "Mod4"; # Win key
 
+      bars = [];
+
       terminal = "alacritty";
 
       input = {
@@ -95,6 +97,9 @@
         "Ctrl+1" = "input type:keyboard xkb_switch_layout 0";
         "Ctrl+2" = "input type:keyboard xkb_switch_layout 1";
         "Ctrl+3" = "input type:keyboard xkb_switch_layout 2";
+
+        # lock screen
+        "${mod}+Ctrl+l" = "exec swaylock -f -c 000000";
       };
 
       modes = {
