@@ -8,7 +8,7 @@
     variant = "";
   };
 
-  programs.sway.enable = true;
+  #programs.sway.enable = true;
 
   hardware.graphics.enable = true;
 
