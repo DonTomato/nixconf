@@ -128,10 +128,50 @@
       layer = "top";
       position = "top";
 
-      modules-left = [ "clock" ];
-      modules-right = [ "cpu" "memory" "network" ];
+      modules-left = [ "sway/workspaces" ];
+      modules-center = [ "clock" ];
+      modules-right = [
+        "cpu"
+        "memory"
+        "network"
+        "battery"
+        "keyboard-state"
+        "custom/lang"
+      ];
 
-      clock.format = "{:%H:%M}";
+      clock = {
+        format = "{:%H:%M}";
+      };
+
+      cpu = {
+        format = "CPU {usage}%";
+      };
+
+      memory = {
+        format = "RAM {}%";
+      };
+
+      network = {
+        format-wifi = "{essid}";
+        format-ethernet = "eth";
+        format-disconnected = "offline";
+      };
+
+      battery = {
+        format = "{capacity}%";
+        format-charging = "⚡ {capacity}%";
+      };
+
+      "keyboard-state" = {
+        numlock = false;
+        capslock = true;
+        format = "{name}";
+      };
+
+      "custom/lang" = {
+        exec = "swaymsg -t get_inputs | grep -A 10 xkb_active_layout_name | grep name | head -1 | cut -d '\"' -f4";
+        interval = 1;
+      };
     }];
   };
 }
