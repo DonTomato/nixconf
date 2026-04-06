@@ -169,9 +169,41 @@
       };
 
       "custom/lang" = {
-        exec = "swaymsg -t get_inputs | grep -A 10 xkb_active_layout_name | grep name | head -1 | cut -d '\"' -f4";
+        exec = ''
+          swaymsg -t get_inputs \
+          | grep -A 10 xkb_active_layout_name \
+          | grep name \
+          | head -1 \
+          | cut -d '"' -f4 \
+          | sed 's/English.*/EN/; s/Norwegian.*/NO/; s/Russian.*/RU/'
+        '';
         interval = 1;
       };
     }];
+
+    style = ''
+      * {
+        font-family: monospace;
+        font-size: 12px;
+      }
+
+      window#waybar {
+        background: #1e1e2e;
+        color: #cdd6f4;
+      }
+
+      #workspaces button {
+        padding: 0 5px;
+      }
+
+      #workspaces button.focused {
+        background: #89b4fa;
+        color: #1e1e2e;
+      }
+
+      #clock, #cpu, #memory, #network, #battery, #custom-lang {
+        padding: 0 10px;
+      }
+    '';
   };
 }
