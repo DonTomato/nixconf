@@ -1,0 +1,11 @@
+# NixOS config
+
+hardware-configuration.nix
+result
+#flake.lock
+
+# Emacs
+
+*~
+\#*\#
+.\#*
