@@ -1,6 +1,6 @@
 # NixOS config
 
-hardware-configuration.nix
+#hardware-configuration.nix
 result
 #flake.lock
 
