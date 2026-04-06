@@ -53,10 +53,65 @@
         "${mod}+q" = "kill";
         "${mod}+d" = "exec dmenu_run";
 
+        # фокус окон
+        "${mod}+h" = "focus left";
+        "${mod}+j" = "focus down";
+        "${mod}+k" = "focus up";
+        "${mod}+l" = "focus right";
+
+        # фокус окон: стрелки
+        "${mod}+Left" = "focus left";
+        "${mod}+Down" = "focus down";
+        "${mod}+Up" = "focus up";
+        "${mod}+Right" = "focus right";
+        
+        # перемещение окон
+        "${mod}+Shift+h" = "move left";
+        "${mod}+Shift+j" = "move down";
+        "${mod}+Shift+k" = "move up";
+        "${mod}+Shift+l" = "move right";
+
+        # перемещение окон: стрелки
+        "${mod}+Shift+Left" = "move left";
+        "${mod}+Shift+Down" = "move down";
+        "${mod}+Shift+Up" = "move up";
+        "${mod}+Shift+Right" = "move right";
+
+        # layout (то, что ты хотел)
+        "${mod}+v" = "split v";
+        "${mod}+b" = "split h";
+        "${mod}+s" = "layout stacking";
+        "${mod}+w" = "layout tabbed";
+        "${mod}+e" = "layout toggle split";
+
+        # fullscreen / float
+        "${mod}+f" = "fullscreen";
+        "${mod}+Shift+space" = "floating toggle";
+
+        # resize mode
+        "${mod}+r" = "mode resize";
+
         # languages
         "Ctrl+1" = "input type:keyboard xkb_switch_layout 0";
         "Ctrl+2" = "input type:keyboard xkb_switch_layout 1";
         "Ctrl+3" = "input type:keyboard xkb_switch_layout 2";
+      };
+
+      modes = {
+        resize = {
+          "h" = "resize shrink width 10 px";
+          "j" = "resize grow height 10 px";
+          "k" = "resize shrink height 10 px";
+          "l" = "resize grow width 10 px";
+
+          "Left" = "resize shrink width 10 px";
+          "Down" = "resize grow height 10 px";
+          "Up" = "resize shrink height 10 px";
+          "Right" = "resize grow width 10 px";
+
+          "Return" = "mode default";
+          "Escape" = "mode default";
+        };
       };
 
       startup = [
