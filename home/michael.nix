@@ -1,11 +1,13 @@
 { config, pkgs, ... }:
 
-{
+let
+  wallpaper = ./../wallpapers/default.nixos.png;
+in {
   home.username = "michael";
   home.homeDirectory = "/home/michael";
 
   home.stateVersion = "25.11";
-
+    
   programs.home-manager.enable = true;
 
   # sway
@@ -66,7 +68,7 @@
         "${mod}+Down" = "focus down";
         "${mod}+Up" = "focus up";
         "${mod}+Right" = "focus right";
-        
+
         # перемещение окон
         "${mod}+Shift+h" = "move left";
         "${mod}+Shift+j" = "move down";
@@ -121,6 +123,7 @@
 
       startup = [
         { command = "waybar"; }
+        { command = "swaybg -i ${wallpaper} -m fill"; }
       ];
     };
   };
