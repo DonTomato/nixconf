@@ -18,5 +18,6 @@
     git
     mc
     bitwarden-desktop
+    rclone
   ];
 }

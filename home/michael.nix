@@ -95,6 +95,12 @@ in {
         # resize mode
         "${mod}+r" = "mode resize";
 
+        # отправить окно в scratchpad
+        "${mod}+Shift+minus" = "move scratchpad";
+
+        # показать / скрыть
+        "${mod}+minus" = "scratchpad show";
+
         # languages
         "Ctrl+1" = "input type:keyboard xkb_switch_layout 0";
         "Ctrl+2" = "input type:keyboard xkb_switch_layout 1";
