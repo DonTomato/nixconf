@@ -22,6 +22,14 @@ in {
       terminal = "alacritty";
 
       input = {
+        "type:touchpad" = {
+          natural_scroll = "enabled";
+          tap = "enabled";
+
+          # decrease scroll speed
+          scroll_factor = "0.5";
+        };
+        
         "*" = {
           xkb_layout = "us,no,ru";
           xkb_options = "grp:alt_shift_toggle";
