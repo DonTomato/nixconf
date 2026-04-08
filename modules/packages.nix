@@ -14,7 +14,7 @@
     grim
     slurp
     firefox
-    emacs
+    emacs-pgtk
     git
     mc
     bitwarden-desktop
