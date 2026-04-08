@@ -150,7 +150,12 @@ in {
       layer = "top";
       position = "top";
 
-      modules-left = [ "sway/workspaces" ];
+      modules-left = [ "sway/workspaces" "sway/mode" ];
+
+      "sway/mode" = {
+        format = "<span style=\"italic\">{}</span>";
+      };
+
       modules-center = [ "clock" ];
       modules-right = [
         "cpu"
@@ -225,6 +230,20 @@ in {
 
       #clock, #cpu, #memory, #network, #battery, #custom-lang {
         padding: 0 10px;
+      }
+
+      #custom-lang {
+        background: #054d18;
+        margin-left: 10px;
+        border-radius: 5px;
+      }
+
+      #mode {
+        color: #ffffff;
+        background: #e06c75;
+        padding: 0 10px;
+        margin-left: 10px;
+        border-radius: 5px;
       }
     '';
   };
