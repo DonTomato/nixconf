@@ -89,7 +89,7 @@ in {
         "${mod}+Shift+Up" = "move up";
         "${mod}+Shift+Right" = "move right";
 
-        # layout (то, что ты хотел)
+        # changing layout
         "${mod}+v" = "split v";
         "${mod}+b" = "split h";
         "${mod}+s" = "layout stacking";

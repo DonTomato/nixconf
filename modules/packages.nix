@@ -13,6 +13,7 @@
     wl-clipboard
     grim
     slurp
+    signal-desktop
     firefox
     emacs-pgtk
     git
