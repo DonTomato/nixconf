@@ -21,5 +21,7 @@
     bitwarden-desktop
     rclone
     wofi
+    papirus-icon-theme
+    btop
   ];
 }

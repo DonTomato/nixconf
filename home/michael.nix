@@ -247,4 +247,64 @@ in {
       }
     '';
   };
+
+  xdg.configFile."wofi/config".text = ''
+    show=drun
+    allow_images=true
+    width=600
+    height=400
+    location=center
+    prompt=Search...
+    hide_scroll=true
+    gtk_dark=true
+  '';
+
+  xdg.configFile."wofi/style.css".text = ''
+    * {
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    window {
+      background-color: rgba(30, 30, 46, 0.95);
+      border-radius: 12px;
+      border: 2px solid #89b4fa;
+    }
+
+    #outer-box {
+      margin: 10px;
+      padding: 10px;
+    }
+
+    #input {
+      margin: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      background-color: #1e1e2e;
+      color: #cdd6f4;
+    }
+
+    #inner-box {
+      margin: 10px;
+    }
+
+    #entry {
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    #entry:selected {
+      background-color: #89b4fa;
+      color: #1e1e2e;
+    }
+
+    #img {
+      margin-right: 10px;
+    }
+
+    #text {
+      color: #cdd6f4;
+    }
+  '';
 }
