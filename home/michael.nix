@@ -138,6 +138,7 @@ in {
       startup = [
         { command = "waybar"; }
         { command = "swaybg -i ${wallpaper} -m fill"; }
+        { command = "blueman-applet"; }
       ];
     };
   };

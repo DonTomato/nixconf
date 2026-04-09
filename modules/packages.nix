@@ -24,5 +24,7 @@
     papirus-icon-theme
     btop
     qalculate-gtk
+    blueman
+    imv
   ];
 }

@@ -13,4 +13,7 @@
   nixpkgs.config.allowUnfree = true;
 
   security.pam.services.swaylock = {};
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 }
