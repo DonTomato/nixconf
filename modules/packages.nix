@@ -26,5 +26,7 @@
     qalculate-gtk
     blueman
     imv
+    thunar
+    yazi
   ];
 }
