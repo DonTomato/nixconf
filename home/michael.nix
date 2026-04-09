@@ -32,7 +32,7 @@ in {
         
         "*" = {
           xkb_layout = "us,no,ru";
-          xkb_options = "grp:alt_shift_toggle";
+          # xkb_options = "grp:alt_shift_toggle";
         };
       };
 
@@ -63,7 +63,7 @@ in {
 
         # базовое
         "${mod}+q" = "kill";
-        "${mod}+d" = "exec dmenu_run";
+        "${mod}+d" = "exec wofi --show drun";
 
         # фокус окон
         "${mod}+h" = "focus left";

@@ -20,5 +20,6 @@
     mc
     bitwarden-desktop
     rclone
+    wofi
   ];
 }
