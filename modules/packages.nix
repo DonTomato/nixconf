@@ -23,5 +23,6 @@
     wofi
     papirus-icon-theme
     btop
+    qalculate-gtk
   ];
 }
