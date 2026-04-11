@@ -28,5 +28,7 @@
     imv
     thunar
     yazi
+    zig
+    zls
   ];
 }
