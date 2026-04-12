@@ -30,5 +30,7 @@
     yazi
     zig
     zls
+    mpv
+    celluloid
   ];
 }
