@@ -10,6 +10,11 @@ in {
     
   programs.home-manager.enable = true;
 
+  programs.alacritty = {
+    enable = true;
+    settings.font.size = 10.0;
+  };
+
   # sway
   wayland.windowManager.sway = {
     enable = true;

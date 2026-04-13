@@ -33,5 +33,6 @@
     mpv
     celluloid
     neovim
+    ripgrep
   ];
 }
