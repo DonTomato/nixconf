@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  wallpaper = ./../wallpapers/default.nixos.png;
+  wallpaper = ./../wallpapers/nix-wallpaper-dracula.png;
 in {
   home.username = "michael";
   home.homeDirectory = "/home/michael";

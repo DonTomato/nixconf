@@ -32,5 +32,6 @@
     zls
     mpv
     celluloid
+    neovim
   ];
 }
