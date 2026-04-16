@@ -28,11 +28,15 @@
     imv
     thunar
     yazi
+    # zig language
     zig
     zls
     mpv
     celluloid
     neovim
     ripgrep
+    
+    # pactl - to change sound volume
+    pulseaudio
   ];
 }
