@@ -173,7 +173,6 @@ in {
         "memory"
         "network"
         "battery"
-        # "keyboard-state"
         "pulseaudio"
         "custom/lang"
       ];
@@ -202,14 +201,13 @@ in {
       };
 
       pulseaudio = {
-        format = "VS:{volume}%";
+        #format = "VS:{volume}%";
+        format = "{icon} {volume}%";
+        format-muted = "";
+        format-icons = {
+          default = [ "" "" "" ];
+        };
       };
-
-      #"keyboard-state" = {
-      #  numlock = false;
-      #  capslock = true;
-      #  format = "{name}";
-      #};
 
       "custom/lang" = {
         exec = ''
@@ -226,7 +224,7 @@ in {
 
     style = ''
       * {
-        font-family: monospace;
+        font-family: "JetBrainsMono Nerd Font Mono", "JetBrainsMono NFM", monospace;
         font-size: 12px;
       }
 
