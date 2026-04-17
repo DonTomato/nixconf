@@ -173,7 +173,8 @@ in {
         "memory"
         "network"
         "battery"
-        "keyboard-state"
+        # "keyboard-state"
+        "pulseaudio"
         "custom/lang"
       ];
 
@@ -200,11 +201,15 @@ in {
         format-charging = "⚡ {capacity}%";
       };
 
-      "keyboard-state" = {
-        numlock = false;
-        capslock = true;
-        format = "{name}";
+      pulseaudio = {
+        format = "VS:{volume}%";
       };
+
+      #"keyboard-state" = {
+      #  numlock = false;
+      #  capslock = true;
+      #  format = "{name}";
+      #};
 
       "custom/lang" = {
         exec = ''
