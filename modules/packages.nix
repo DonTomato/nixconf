@@ -38,5 +38,8 @@
     
     # pactl - to change sound volume
     pulseaudio
+
+    # change brightness of screen
+    brightnessctl
   ];
 }

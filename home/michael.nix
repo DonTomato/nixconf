@@ -126,6 +126,10 @@ in {
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
         "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+
+        # Change brightness
+        "XF86MonBrightnessUp" = "exec brightnessctl set +5%";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
       };
 
       modes = {
@@ -172,6 +176,7 @@ in {
         "cpu"
         "memory"
         "network"
+        "backlight"
         "battery"
         "pulseaudio"
         "custom/lang"
@@ -208,6 +213,11 @@ in {
         };
       };
 
+      backlight = {
+        device = "intel_backlight";
+        format = "☀️{percent}%";
+      };
+
       "custom/lang" = {
         exec = ''
           swaymsg -t get_inputs \
@@ -241,7 +251,7 @@ in {
         color: #1e1e2e;
       }
 
-      #clock, #cpu, #memory, #network, #battery, #custom-lang {
+      #clock, #cpu, #memory, #network, #battery, #custom-lang, #backlight, #pulseaudio {
         padding: 0 10px;
       }
 
