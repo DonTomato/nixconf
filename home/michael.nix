@@ -196,16 +196,15 @@ in {
       };
 
       battery = {
-        format = "{capacity}%";
-        format-charging = "⚡ {capacity}%";
+        format = "🔋{capacity}%";
+        format-charging = "⚡{capacity}%";
       };
 
       pulseaudio = {
-        #format = "VS:{volume}%";
-        format = "{icon} {volume}%";
-        format-muted = "";
+        format = "{icon}{volume}%";
+        format-muted = "🔇";
         format-icons = {
-          default = [ "" "" "" ];
+          default = [ "🔈" "🔉" "🔊" ];
         };
       };
 
