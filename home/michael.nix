@@ -120,7 +120,7 @@ in {
         "Ctrl+3" = "input type:keyboard xkb_switch_layout 2";
 
         # lock screen
-        "${mod}+Ctrl+l" = "exec swaylock -f -c 000000";
+        "${mod}+Ctrl+l" = "exec swaylock -f -c 000000 && sleep 1 && systemctl suspend ";
 
         # Audio buttons
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
