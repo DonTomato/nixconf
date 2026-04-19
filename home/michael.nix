@@ -26,6 +26,39 @@ in {
     settings.font.size = 10.0;
   };
 
+  # mpv player
+  programs.mpv = {
+    enable = true;
+
+    config = {
+      vo = "gpu";
+      gpu-context = "wayland";
+      hwdec = "auto-safe";
+
+      save-position-on-quit = "yes";
+      keep-open = "yes";
+
+      osd-bar = "yes";
+      osd-duration = "2000";
+    };
+
+    bindings = {
+      a = "cycle audio";
+      A = "cycle audio down";
+
+      s = "cycle sub";
+      S = "cycle sub down";
+
+      z = "cycle sub-visibility";
+
+      x = "add sub-delay -0.1";
+      c = "add sub-delay 0.1";
+
+      d = "add audio-delay 0.1";
+      D = "add audio-delay -0.1";
+    };
+  };
+
   # sway
   wayland.windowManager.sway = {
     enable = true;
