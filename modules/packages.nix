@@ -13,28 +13,32 @@
     wl-clipboard
     grim
     slurp
-    signal-desktop
     firefox
     emacs-pgtk
     git
+    ripgrep
     mc
-    bitwarden-desktop
     rclone
     wofi
     papirus-icon-theme
     btop
     qalculate-gtk
+
+    # bluetooth manager
     blueman
+
+    # image viewer
     imv
+    # file managers
     thunar
     yazi
     # zig language
     zig
     zls
+
+    # video player
     mpv
     celluloid
-    neovim
-    ripgrep
     
     # pactl - to change sound volume
     pulseaudio

@@ -6,6 +6,17 @@ in {
   home.username = "michael";
   home.homeDirectory = "/home/michael";
 
+  home.packages = with pkgs; [
+    signal-desktop
+    bitwarden-desktop
+    neovim
+    nil
+  ];
+
+  home.sessionVariables = {
+    XDG_DATA_DIRS = "${config.home.profileDirectory}/share:/usr/share";
+  };
+
   home.stateVersion = "25.11";
     
   programs.home-manager.enable = true;
