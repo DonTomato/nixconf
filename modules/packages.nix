@@ -32,6 +32,9 @@
     # file managers
     thunar
     yazi
+
+    # C compiles
+    gcc
     # zig language
     zig
     zls
