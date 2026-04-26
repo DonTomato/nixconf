@@ -12,7 +12,7 @@
     ../../modules/env.nix
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "lite";
 
   system.stateVersion = "25.11";
 }

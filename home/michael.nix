@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  wallpaper = ./../wallpapers/nix-wallpaper-dracula.png;
+  wallpaper = ./../wallpapers/Nova.png;
 in {
   home.username = "michael";
   home.homeDirectory = "/home/michael";
@@ -18,7 +18,7 @@ in {
   };
 
   home.stateVersion = "25.11";
-    
+
   programs.home-manager.enable = true;
 
   programs.alacritty = {
@@ -45,7 +45,7 @@ in {
           # decrease scroll speed
           scroll_factor = "0.5";
         };
-        
+
         "*" = {
           xkb_layout = "us,no,ru";
           # xkb_options = "grp:alt_shift_toggle";
