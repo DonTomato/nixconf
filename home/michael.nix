@@ -425,7 +425,8 @@ in {
         padding: 0 5px;
       }
 
-      #workspaces button.focused {
+      #workspaces button.focused,
+      #workspaces button.active {
         background: #89b4fa;
         color: #1e1e2e;
       }
