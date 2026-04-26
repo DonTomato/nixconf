@@ -14,24 +14,25 @@
   let
     system = "x86_64-linux";
 
-    commonModules = [
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.michael = import ./home/michael.nix;
-      }
-    ];
-
-    mkHost = hostPath: nixpkgs.lib.nixosSystem {
+    mkHost = hostPath: { wm }: nixpkgs.lib.nixosSystem {
       inherit system;
-      modules = [ hostPath ] ++ commonModules;
+      specialArgs = { inherit wm; };
+      modules = [
+        hostPath
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit wm; };
+          home-manager.users.michael = import ./home/michael.nix;
+        }
+      ];
     };
   in
   {
     nixosConfigurations = {
-      lite = mkHost ./hosts/lite/configuration.nix;
-      ws   = mkHost ./hosts/ws/configuration.nix;
+      lite = mkHost ./hosts/lite/configuration.nix { wm = "sway"; };
+      ws   = mkHost ./hosts/ws/configuration.nix   { wm = "hyprland"; };
     };
   };
 }

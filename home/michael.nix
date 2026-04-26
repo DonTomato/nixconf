@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, wm, ... }:
 
 let
   wallpaper = ./../wallpapers/Nova.png;
+  mod = "Mod4";
+  isSway = wm == "sway";
+  isHyprland = wm == "hyprland";
 in {
   home.username = "michael";
   home.homeDirectory = "/home/michael";
@@ -28,7 +31,7 @@ in {
 
   # sway
   wayland.windowManager.sway = {
-    enable = true;
+    enable = isSway;
 
     config = {
       modifier = "Mod4"; # Win key
@@ -168,6 +171,114 @@ in {
     };
   };
 
+  # hyprland
+  wayland.windowManager.hyprland = {
+    enable = isHyprland;
+
+    settings = {
+      "$mod" = "SUPER";
+
+      monitor = [ ", preferred, auto, 1" ];
+
+      input = {
+        kb_layout = "us,no,ru";
+        touchpad = {
+          natural_scroll = true;
+          scroll_factor = "0.5";
+        };
+      };
+
+      general = {
+        gaps_in = 5;
+        gaps_out = 10;
+        border_size = 2;
+        "col.active_border" = "rgb(89b4fa)";
+        "col.inactive_border" = "rgb(1e1e2e)";
+      };
+
+      decoration = {
+        rounding = 8;
+      };
+
+      bind = [
+        "$mod, Return, exec, alacritty"
+        "$mod, Q, killactive"
+        "$mod, D, exec, wofi --show drun"
+        "$mod, F, fullscreen"
+        "$mod SHIFT, Space, togglefloating"
+
+        # фокус окон
+        "$mod, H, movefocus, l"
+        "$mod, J, movefocus, d"
+        "$mod, K, movefocus, u"
+        "$mod, L, movefocus, r"
+        "$mod, Left, movefocus, l"
+        "$mod, Down, movefocus, d"
+        "$mod, Up, movefocus, u"
+        "$mod, Right, movefocus, r"
+
+        # перемещение окон
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, J, movewindow, d"
+        "$mod SHIFT, K, movewindow, u"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, Left, movewindow, l"
+        "$mod SHIFT, Down, movewindow, d"
+        "$mod SHIFT, Up, movewindow, u"
+        "$mod SHIFT, Right, movewindow, r"
+
+        # переключение workspace
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+
+        # перемещение окон в workspace
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+
+        # scratchpad
+        "$mod SHIFT, Minus, movetoworkspace, special"
+        "$mod, Minus, togglespecialworkspace"
+
+        # lock screen
+        "$mod CTRL, L, exec, swaylock -f -c 000000 && sleep 1 && systemctl suspend"
+
+        # languages
+        "CTRL, 1, exec, hyprctl switchxkblayout all 0"
+        "CTRL, 2, exec, hyprctl switchxkblayout all 1"
+        "CTRL, 3, exec, hyprctl switchxkblayout all 2"
+      ];
+
+      # resize с мышью
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
+
+      binde = [
+        # Audio
+        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+        ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+        # Brightness
+        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+      ];
+
+      exec-once = [
+        "waybar"
+        "swaybg -i ${wallpaper} -m fill"
+        "blueman-applet"
+      ];
+    };
+  };
+
   # waybar
   programs.waybar = {
     enable = true;
@@ -176,7 +287,9 @@ in {
       layer = "top";
       position = "top";
 
-      modules-left = [ "sway/workspaces" "sway/mode" ];
+      modules-left =
+        if isSway then [ "sway/workspaces" "sway/mode" ]
+        else [ "hyprland/workspaces" ];
 
       "sway/mode" = {
         format = "<span style=\"italic\">{}</span>";
@@ -230,14 +343,22 @@ in {
       };
 
       "custom/lang" = {
-        exec = ''
-          swaymsg -t get_inputs \
-          | grep -A 10 xkb_active_layout_name \
-          | grep name \
-          | head -1 \
-          | cut -d '"' -f4 \
-          | sed 's/English.*/EN/; s/Norwegian.*/NO/; s/Russian.*/RU/'
-        '';
+        exec =
+          if isSway then ''
+            swaymsg -t get_inputs \
+            | grep -A 10 xkb_active_layout_name \
+            | grep name \
+            | head -1 \
+            | cut -d '"' -f4 \
+            | sed 's/English.*/EN/; s/Norwegian.*/NO/; s/Russian.*/RU/'
+          '' else ''
+            hyprctl devices -j \
+            | grep -A 2 active_keymap \
+            | grep active_keymap \
+            | head -1 \
+            | cut -d '"' -f4 \
+            | sed 's/English.*/EN/; s/Norwegian.*/NO/; s/Russian.*/RU/'
+          '';
         interval = 1;
       };
     }];
