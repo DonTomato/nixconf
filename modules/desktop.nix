@@ -8,8 +8,6 @@
     variant = "";
   };
 
-  #programs.sway.enable = true;
-
   hardware.graphics.enable = true;
 
   services.greetd = {
