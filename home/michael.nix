@@ -231,6 +231,22 @@ in {
         rounding = 8;
       };
 
+      animations = {
+        enabled = true;
+        # Быстрые, но не дёрганые анимации
+        bezier = [
+          "snappy, 0.25, 1, 0.5, 1"
+        ];
+        animation = [
+          "windows,     1, 2, snappy, slide"
+          "windowsOut,  1, 2, snappy, slide"
+          "border,      1, 3, snappy"
+          "borderangle, 1, 3, snappy"
+          "fade,        1, 2, snappy"
+          "workspaces,  1, 2, snappy, slide"
+        ];
+      };
+
       bind = [
         "$mod, Return, exec, alacritty"
         "$mod, Q, killactive"
