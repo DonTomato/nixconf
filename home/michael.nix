@@ -24,6 +24,36 @@ in {
 
   programs.home-manager.enable = true;
 
+  # Тёмная тема по умолчанию
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "adwaita-dark";
+  };
+
+  # Сообщает xdg-desktop-portal предпочтение тёмной темы
+  # (читают Electron, Chromium, Firefox, GTK4 и др.)
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Adwaita-dark";
+    };
+  };
+
   programs.alacritty = {
     enable = true;
     settings.font.size = 10.0;

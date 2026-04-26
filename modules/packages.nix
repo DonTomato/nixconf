@@ -45,5 +45,7 @@
 
     # change brightness of screen
     brightnessctl
+
+    vscode
   ];
 }

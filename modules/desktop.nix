@@ -12,6 +12,19 @@
 
   programs.hyprland.enable = (wm == "hyprland");
 
+  # XDG portal — нужен чтобы приложения могли читать системную тему (color-scheme)
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ]
+      ++ pkgs.lib.optional (wm == "hyprland") pkgs.xdg-desktop-portal-hyprland;
+    config.common.default = "*";
+  };
+
+  environment.sessionVariables = {
+    GTK_THEME = "Adwaita:dark";
+    QT_QPA_PLATFORMTHEME = "gtk3";
+  };
+
   services.greetd = {
     enable = true;
     settings = {
